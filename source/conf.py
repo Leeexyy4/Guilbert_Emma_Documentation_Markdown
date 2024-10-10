@@ -6,6 +6,8 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import sys; sys.setrecursionlimit(1500)
+
 project = 'CalculCentrePoints'
 copyright = '2024, GUILBERT Emma'
 author = 'GUILBERT Emma'
