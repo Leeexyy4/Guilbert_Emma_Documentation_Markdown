@@ -256,8 +256,3 @@ Pour aller plus loin
 Monka <https://www.google.com/search?client=opera-gx&q=calcul+point+moyen+nuage&sourceid=opera&ie=UTF-8&oe=UTF-8#>`__.
 
 .. |Nuage de points| image:: ../docs/assets/NuagePoints.png
-
-.. toctree::
-   :maxdepth: 0
-
-   about
