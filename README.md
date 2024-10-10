@@ -49,7 +49,7 @@
 
 Le projet a été réalisé de réaliser une documentation utilisant Mkdocs uniquement en Markdown pour le cours de qualité de développement.
 
-Lien vers la documentation en ligne :
+Lien vers la documentation en ligne : https://guilbert-emma-documentation-markdown.readthedocs.io/en/latest/
 
 <p align="right"><a href="#readme-top">&#8593</a></p>
 
