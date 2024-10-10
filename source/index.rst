@@ -258,6 +258,6 @@ Monka <https://www.google.com/search?client=opera-gx&q=calcul+point+moyen+nuage&
 .. |Nuage de points| image:: ../docs/assets/NuagePoints.png
 
 .. toctree::
-   :maxdepth: 1  # Limitez la profondeur si nécessaire
+   :maxdepth: 1 
 
    about
