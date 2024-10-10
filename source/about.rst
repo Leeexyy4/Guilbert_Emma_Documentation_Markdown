@@ -41,4 +41,3 @@ Sources
    :caption: Contenu
 
    index
-   about

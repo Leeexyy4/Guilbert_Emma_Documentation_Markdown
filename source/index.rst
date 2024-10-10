@@ -261,5 +261,4 @@ Monka <https://www.google.com/search?client=opera-gx&q=calcul+point+moyen+nuage&
    :maxdepth: 2
    :caption: Contenu
 
-   index
    about
