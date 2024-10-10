@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>CalculCentrePoints documentation &#8212; Documentation CalculCentrePoints </title>
+    <title>Documentation afin de calculer le point moyen d’un nuage de points &#8212; Documentation CalculCentrePoints </title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -14,6 +14,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
    
@@ -32,11 +33,240 @@
 
           <div class="body" role="main">
             
-  <section id="calculcentrepoints-documentation">
-<h1>CalculCentrePoints documentation<a class="headerlink" href="#calculcentrepoints-documentation" title="Lien permanent vers ce titre">¶</a></h1>
-<p>../docs/Documentation.rst</p>
-<div class="toctree-wrapper compound">
+  <section id="documentation-afin-de-calculer-le-point-moyen-dun-nuage-de-points">
+<h1>Documentation afin de calculer le point moyen d’un nuage de points<a class="headerlink" href="#documentation-afin-de-calculer-le-point-moyen-dun-nuage-de-points" title="Lien permanent vers ce titre">¶</a></h1>
+<p><em>Suite au cours de</em><strong>qualité de dévelopement</strong><em>, j’ai réalisé la
+documentation permettant de calculer le</em><strong>point moyen</strong><em>d’un nuage
+de points vu en cours de Modélisation</em></p>
+<section id="sommaire">
+<h2>Sommaire<a class="headerlink" href="#sommaire" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Calcul</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;équation selon les points du nuage</span>
+<span class="mf">2.</span> <span class="n">Calcul</span> <span class="n">du</span> <span class="n">gradient</span> <span class="n">afin</span> <span class="n">de</span> <span class="n">trouver</span> <span class="n">les</span> <span class="n">points</span> <span class="n">critiques</span> <span class="p">(</span><span class="n">coordonnées</span> <span class="n">du</span> <span class="n">point</span> <span class="n">moyen</span><span class="p">)</span>
+<span class="mf">3.</span> <span class="n">Vérification</span> <span class="n">par</span> <span class="n">le</span> <span class="n">calcul</span> <span class="n">de</span> <span class="n">la</span> <span class="n">Matrice</span> <span class="n">Hessienne</span>
+</pre></div>
 </div>
+</section>
+<section id="contexte">
+<h2>Contexte<a class="headerlink" href="#contexte" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La documentation suivante permet de déterminer <strong>le point central</strong> d’un
+nuage de points, grâce à leurs coordonnées dans un repère orthonormé.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour comprendre les calculs des points moyens nous allons utiliser un
+exemple d’application : <img alt="Nuage de points" src="_images/NuagePoints.png" /></p>
+<p>Le nuage de point précédents représente l’age des galinacées<code class="docutils literal notranslate"><span class="pre">(x)</span></code>
+selon leur nombre<code class="docutils literal notranslate"><span class="pre">(y)</span></code>. Nous voulons déterminer le nombre et l’âge
+moyen selon chaque espèces que comporte la ferme.</p>
+<p>Pour cela nous allons faire une liste des points présents sur le
+graphique selon chaque espèce :</p>
+<p>poulet :</p>
+<div class="math notranslate nohighlight">
+\[(12;25), (14;26), (16;23), (16;27)\]</div>
+<p>canard :</p>
+<div class="math notranslate nohighlight">
+\[(16;13), (16;31)\]</div>
+<p>dinde :</p>
+<div class="math notranslate nohighlight">
+\[(13;31), (14;19), (15;25)\]</div>
+</section>
+<section id="i-calcul-de-lequation-selon-les-points-du-nuage">
+<h2>I - Calcul de l’équation selon les points du nuage<a class="headerlink" href="#i-calcul-de-lequation-selon-les-points-du-nuage" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour chaque espèce :</p>
+<p>En utilisant la formule permettant de calculer le point moyen entre deux
+points, on obtient :</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = (x - \text{coordX})^{2} + (y - \text{coordY})^{2}\]</div>
+<p>poulet :</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = (x - 12)^{2} + (y - 25)^{2} + (x - 14)^{2} + (y - 26)^{2} + (x - 16)^{2} + (y - 23)^{2} + (x - 16)^{2} + (y - 27)^{2}\]</div>
+<p>canard :</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = (x - 16)^{2} + (y - 13)^{2} + (x - 16)^{2} + (y - 31)^{2}\]</div>
+<p>dinde</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = (x - 13)^{2} + (y - 31)^{2} + (x - 14)^{2} + (y - 19)^{2} + (x - 15)^{2} + (y - 25)^{2}\]</div>
+<p>Il faut donc maintenant développer les équations :</p>
+<p>poulet :</p>
+<div class="math notranslate nohighlight">
+\[4x^{2} - 116x + 4y^{2} - 202y + 3477\]</div>
+<p>canard :</p>
+<div class="math notranslate nohighlight">
+\[2x^{2} - 64x + 2 y^{2} - 88y + 1642\]</div>
+<p>dinde :</p>
+<div class="math notranslate nohighlight">
+\[3x^{2} -84x + 3y^{2} - 150y + 2537\]</div>
+</section>
+<section id="ii-calcul-du-gradient-afin-de-trouver-les-points-critiques-coordonnees-du-point-moyen">
+<h2>II - Calcul du gradient afin de trouver les points critiques (coordonnées du point moyen)<a class="headerlink" href="#ii-calcul-du-gradient-afin-de-trouver-les-points-critiques-coordonnees-du-point-moyen" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour chaque équation obtenue on calcule la dérivée par x et par y :</p>
+<p>poulet :</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = 4x^{2} - 116x + 4y^{2} - 202y + 3477\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial x}(x,y) = 8x - 116\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial y}(x,y) = 8y - 202\]</div>
+<p>canard :</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = 2x^{2} - 64x + 2 y^{2} - 88y + 1642\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial x}(x,y) = 4x - 64\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial y}(x,y) = 4y - 88\]</div>
+<p>dinde :</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = 3x^{2} -84x + 3y^{2} - 150y + 2537\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial x}(x,y) = 6x - 84\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial y}(x,y) = 6y - 150\]</div>
+<p>On peut maintenant chercher les points moyens de chaque espèces, pour
+trouver le point x et le point y on prend la dérivée et on cherche quand
+x ou y = 0 :</p>
+<p>poulet :</p>
+<div class="math notranslate nohighlight">
+\[8x -116 = 0\]</div>
+<div class="math notranslate nohighlight">
+\[8x = 116\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{8x}{8} = \displaystyle\frac{116}{8}\]</div>
+<div class="math notranslate nohighlight">
+\[x = 14.5\]</div>
+<div class="math notranslate nohighlight">
+\[8y - 202 = 0\]</div>
+<div class="math notranslate nohighlight">
+\[8y = 202\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{8y}{8} = \displaystyle \frac{202}{8}\]</div>
+<div class="math notranslate nohighlight">
+\[y = 25.25\]</div>
+<p>Le point moyen des poulets est de coordonnées :</p>
+<div class="math notranslate nohighlight">
+\[(x = 14.5, y = 25.25)\]</div>
+<p>canard :</p>
+<div class="math notranslate nohighlight">
+\[4x - 64 = 0\]</div>
+<div class="math notranslate nohighlight">
+\[4x = 64\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle\frac{4x}{4} = \displaystyle\frac{64}{4}\]</div>
+<div class="math notranslate nohighlight">
+\[x = 16\]</div>
+<div class="math notranslate nohighlight">
+\[4y - 88 = 0\]</div>
+<div class="math notranslate nohighlight">
+\[4y = 88\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle\frac{4y}{4} = \displaystyle\frac{88}{4}\]</div>
+<div class="math notranslate nohighlight">
+\[y = 22\]</div>
+<p>Le point moyen des poulets est de coordonnées :</p>
+<div class="math notranslate nohighlight">
+\[(x = 16, y = 22)\]</div>
+<p>dinde :</p>
+<div class="math notranslate nohighlight">
+\[6x - 84 = 0\]</div>
+<div class="math notranslate nohighlight">
+\[6x = 84\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle\frac{6x}{6} = \displaystyle\frac{84}{6}\]</div>
+<div class="math notranslate nohighlight">
+\[x = 14\]</div>
+<div class="math notranslate nohighlight">
+\[6y - 150 = 0\]</div>
+<div class="math notranslate nohighlight">
+\[6y = 150\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle\frac{6y}{6} = \displaystyle\frac{150}{6}\]</div>
+<div class="math notranslate nohighlight">
+\[y = 25\]</div>
+<p>Le point moyen des poulets est de coordonnées :</p>
+<div class="math notranslate nohighlight">
+\[(x = 14, y = 25)\]</div>
+</section>
+<section id="iii-calcul-du-gradient-afin-de-trouver-les-points-critiques-coordonnees-du-point-moyen">
+<h2>III - Calcul du gradient afin de trouver les points critiques (coordonnées du point moyen)<a class="headerlink" href="#iii-calcul-du-gradient-afin-de-trouver-les-points-critiques-coordonnees-du-point-moyen" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Afin de vérifier que nous avons le point moyen minimal, il faut dérivée
+la dérivée de x et de y une nouvelle fois :</p>
+<p>poulet :</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial x}(x,y) = 8x - 116\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial^2 f}{\partial x^2}(x,y) = 8\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial y}(x,y) = 8y - 202\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial^2 f}{\partial x^2}(x,y) = 8\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial^2 f}{\partial x \partial y}(x,y) = 0\]</div>
+<p>La matrice Hessienne est :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{det}(M) = \begin{pmatrix} 8 &amp; 0 \\ 0 &amp; 8 \end{pmatrix} = 8 \times 8 - 0 \times 0 = 64\end{split}\]</div>
+<p>Le point est le point moyen minimum car f &gt; 0 et M &gt; 0</p>
+<p>canard :</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial x}(x,y) = 4x - 64\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial ²f}{\partial x}(x,y) = 4\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial y}(x,y) = 4y - 88\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial ²f}{\partial y}(x,y) = 4\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial^2 f}{\partial x \partial y}(x,y) = 0\]</div>
+<p>La matrice Hessienne est :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{det}(M) = \begin{pmatrix} 4 &amp; 0 \\ 0 &amp; 4 \end{pmatrix} = 4 \times 4 - 0 \times 0 = 16\end{split}\]</div>
+<p>Le point est le point moyen minimum car f &gt; 0 et M &gt; 0</p>
+<p>dinde :</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial x}(x,y) = 6x - 84\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial ²f}{\partial x}(x,y) = 6\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial f}{\partial y}(x,y) = 6y - 150\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial ²f}{\partial y}(x,y) = 6\]</div>
+<div class="math notranslate nohighlight">
+\[\displaystyle \frac{\partial^2 f}{\partial x \partial y}(x,y) = 0\]</div>
+<p>La matrice Hessienne est :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{det}(M) = \begin{pmatrix} 6 &amp; 0 \\ 0 &amp; 6 \end{pmatrix} = 6 \times 6 - 0 \times 0 = 36\end{split}\]</div>
+<p>Le point est le point moyen minimum car f &gt; 0 et M &gt; 0</p>
+</section>
+<section id="pour-aller-plus-loin">
+<h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Lien permanent vers ce titre">¶</a></h2>
+<p><a class="reference external" href="https://www.google.com/search?client=opera-gx&amp;q=calcul+point+moyen+nuage&amp;sourceid=opera&amp;ie=UTF-8&amp;oe=UTF-8#">Vidéo d’Yvan
+Monka</a>.
+# À propos</p>
+<div class="docutils container">
+<p align="center"><p>Projet réalisé en 3ème année de BUT Informatique - 2024</p>
+</p><p>Statut du projet : Terminé</p>
+</div>
+<section id="description-du-projet">
+<h3>Description du projet<a class="headerlink" href="#description-du-projet" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le projet a été réalisé pour créer une documentation utilisant Mkdocs,
+exclusivement en Markdown, dans le cadre du cours de qualité de
+développement.</p>
+</section>
+<section id="contact">
+<h3>Contact<a class="headerlink" href="#contact" title="Lien permanent vers ce titre">¶</a></h3>
+<ul class="simple">
+<li><p><strong>LinkedIn</strong>: <a class="reference external" href="https://www.linkedin.com/in/emma-guilbert-29567b265/">Emma
+Guilbert</a></p></li>
+<li><p><strong>GitHub</strong>: <a class="reference external" href="https://github.com/Leeexyy4/Guilbert_Emma_JeuxVideoIA_Python">Guilbert
+Emma</a></p></li>
+<li><p><strong>Email</strong>: <a class="reference external" href="mailto:emmaguilbert4&#37;&#52;&#48;gmail&#46;com">emmaguilbert4<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
+</ul>
+</section>
+<section id="sources">
+<h3>Sources<a class="headerlink" href="#sources" title="Lien permanent vers ce titre">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=N3rwaXdeNNc">YouTube YouNup</a></p></li>
+</ul>
+</section>
+</section>
 </section>
 
 

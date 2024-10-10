@@ -10,7 +10,7 @@ BUILDDIR      = build
 
 # Define the index and output files for the conversion
 MD_INPUT      = docs/index.md docs/about.md
-RST_OUTPUT = docs/Documentation.rst
+RST_OUTPUT = source/index.rst
 
 # Convert Markdown to reStructuredText
 convert:

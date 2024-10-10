@@ -1,10 +1,6 @@
 # Documentation afin de calculer le point moyen d'un nuage de points
 
----
-
 *Suite au cours de **qualité de dévelopement**, j'ai réalisé la documentation permettant de calculer le **point moyen** d'un nuage de points vu en cours de Modélisation*  
-
----
 
 ### Sommaire
 
@@ -19,7 +15,7 @@ La documentation suivante permet de déterminer **le point central** d'un nuage 
 ### Introduction
 
 Pour comprendre les calculs des points moyens nous allons utiliser un exemple d'application : 
-![](./assets/NuagePoints.png)
+![Nuage de points](../docs/assets/NuagePoints.png)
 
 Le nuage de point précédents représente l'age des galinacées`(x)` selon leur nombre`(y)`. Nous voulons déterminer le nombre et l'âge moyen selon chaque espèces que comporte la ferme.
 
