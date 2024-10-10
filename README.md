@@ -49,6 +49,8 @@
 
 Le projet a été réalisé de réaliser une documentation utilisant Mkdocs uniquement en Markdown pour le cours de qualité de développement.
 
+Lien vers la documentation en ligne :
+
 <p align="right"><a href="#readme-top">&#8593</a></p>
 
 ### Techniques utilisées
