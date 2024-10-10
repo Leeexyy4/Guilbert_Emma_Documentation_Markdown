@@ -1,6 +1,6 @@
 # Documentation afin de calculer le point moyen d'un nuage de points
 
-*Suite au cours de **qualité de dévelopement**, j'ai réalisé la documentation permettant de calculer le **point moyen** d'un nuage de points vu en cours de Modélisation*  
+*Suite au cours de  **qualité de dévelopement** , j'ai réalisé la documentation permettant de calculer le **point moyen** d'un nuage de points vu en cours de Modélisation*  
 
 ### Sommaire
 

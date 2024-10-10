@@ -8,13 +8,10 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
-# Define the index and output files for the conversion
-MD_INPUT      = docs/index.md docs/about.md
-RST_OUTPUT = source/index.rst
-
 # Convert Markdown to reStructuredText
 convert:
-	pandoc $(MD_INPUT) -f markdown -t rst -o $(RST_OUTPUT)
+	pandoc docs/index.md -f markdown -t rst -o source/index.rst 
+	pandoc docs/about.md -f markdown -t rst -o source/about.rst
 
 # Build the documentation after conversion
 build: convert
