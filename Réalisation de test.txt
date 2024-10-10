@@ -1,2 +1,0 @@
-pandoc .\page_garde.md --pdf-engine=pdflatex --mathjax -o page_garde.pdf
-pandoc .\page_garde.md --pdf-engine=pdflatex --mathjax -o page_garde.html

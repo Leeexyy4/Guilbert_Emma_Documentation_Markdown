@@ -6,7 +6,7 @@
 CalculCentrePoints documentation
 ================================
 
-../docs/Documentation.rst
+
 
 
 .. toctree::

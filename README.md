@@ -61,6 +61,7 @@ Le projet a été réalisé en language **Markdown** et en utilisant la biblioth
 
 - Mkdocs version 1.6.1
 - Dépendances Mkdocs
+- Dépendances Sphinx
 
 <p align="right"><a href="#readme-top">&#8593</a></p>
 
@@ -75,6 +76,7 @@ Afin de télécharger et d'installer le projet :
 2. Installer la dépendance mkdocs
    ```sh
    pip install mkdocs
+   pip install sphinx-rtd-theme
    ```
 3. Executer la commande et se rendre sur l'adresse locale : 127.0.0.1:8000
    ```sh
